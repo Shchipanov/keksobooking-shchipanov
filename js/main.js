@@ -19,7 +19,17 @@ const getRandomNumber = (min, max, grade) => {
   return randomNumber;
 };
 
-const generatedNumber = getRandomNumber(50, 500, 4);
+const generatedNumber = getRandomNumber(25, 500, 4);
 //todo служебное сообщение
 // eslint-disable-next-line no-console
 console.log(generatedNumber);
+
+// Функция, возвращающая случайное целое число из переданного диапазона включительно.
+// источник https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+//todo служебное сообщение
+// eslint-disable-next-line no-console
+console.log(getRandomInt(5));
