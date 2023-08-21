@@ -4,7 +4,7 @@
  * @param {number} min - минимальное значение диапазона;
  * @param {number} max - максимальное значение диапазона;
  * @param {number} grade - количество знаков после запятой;
- * @returns {number}
+ * @returns {number};
  */
 
 //todo Не добавлена проверка на отрицательное значение grade, тк есть в самом методе to.Fixed
