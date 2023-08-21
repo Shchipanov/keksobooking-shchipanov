@@ -1,6 +1,6 @@
 import {
   similarAdvertisement
-} from "./modules/arrays.js";
+} from './modules/arrays.js';
 
 console.log(similarAdvertisement);
 
