@@ -1,11 +1,7 @@
 import {
-  getRandomNumber,
-  getRandomInt,
-  getRandomPositiveInteger,
-  getRandomPositiveFloat,
-} from './modules/get_function';
+  similarAdvertisement
+} from "./modules/arrays.js";
 
-getRandomNumber();
-getRandomInt();
-getRandomPositiveInteger();
-getRandomPositiveFloat();
+console.log(similarAdvertisement);
+
+

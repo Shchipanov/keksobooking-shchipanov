@@ -13,8 +13,8 @@
   "devDependencies": {
     "browser-sync": "2.27.7",
     "editorconfig": "^2.0.0",
-    "eslint": "8.7.0",
-    "eslint-config-htmlacademy": "5.0.0"
+    "eslint": "8.16.0",
+    "eslint-config-htmlacademy": "5.1.2"
   },
   "license": "MIT",
   "dependencies": {
