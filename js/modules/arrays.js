@@ -41,7 +41,7 @@ const generateAdvertisement = () => {
   };
 };
 
-const similarAdvertisement = Array.from(
+const similarAdvertisement = () => Array.from(
   {
     length: constants.LIMITED_NUMBER_ADVERTISEMENT,
   },
