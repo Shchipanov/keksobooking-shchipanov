@@ -1,5 +1,4 @@
 // Модуль с заполнением формы
-
 import { getRandomPositiveInteger } from './utils.js';
 
 /**

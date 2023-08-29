@@ -2,6 +2,7 @@ import {
   similarAdvertisement
 } from './modules/arrays.js';
 
-console.log(similarAdvertisement);
+// eslint-disable-next-line no-console
+console.log(similarAdvertisement());
 
 
