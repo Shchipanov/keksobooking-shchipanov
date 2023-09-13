@@ -4,7 +4,7 @@ import constants from '../constants.js';
 import { title, types, checking, checkouts, description, features, photos } from './data.js';
 import { getNewArrayItems } from './form.js';
 
-const generateAdvertisement = () => {
+export const generateAdvertisement = () => {
   const randomIndex = getRandomPositiveInteger(0, avatarsImg.length - 1);
   const [avatar] = avatarsImg.splice(randomIndex, 1);
   const author = {
@@ -41,13 +41,9 @@ const generateAdvertisement = () => {
   };
 };
 
-const similarAdvertisement = () => Array.from(
+export const similarAdvertisement = () => Array.from(
   {
     length: constants.LIMITED_NUMBER_ADVERTISEMENT,
   },
   generateAdvertisement
 );
-
-
-export { similarAdvertisement};
-
