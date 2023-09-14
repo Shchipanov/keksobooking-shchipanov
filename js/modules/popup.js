@@ -52,33 +52,37 @@ export const createCardElement = (paramAdvertisement) => {
   avatarElement.src = paramAdvertisement.author.avatar;
 
   // В список .popup__features выведите все доступные удобства в объявлении.
-  const featuresContainer = cardElement.querySelector('.popup__features');
-  const featureList = featuresContainer.querySelectorAll('.popup__feature');
-  const modifiers = paramAdvertisement.offer.features.map(
-    (feature) => `popup__feature--${feature}`
-  );
-
-  featureList.forEach((featureListItem, i) => {
-    if (!featureListItem.classList.contains(modifiers[i])) {
-      featureListItem.remove();
-    }
-  });
+  const featuresContainerElement =
+    cardElement.querySelector('.popup__features');
+  if (paramAdvertisement.offer.features.lenght === 0) {
+    featuresContainerElement.remove();
+  } else {
+    featuresContainerElement.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+    paramAdvertisement.offer.features.forEach((feature) => {
+      const featureElement = document.createElement('li');
+      featureElement.classList.add('popup__feature');
+      featureElement.classList.add(`popup__feature--${feature}`);
+      fragment.appendChild(featureElement);
+    });
+    featuresContainerElement.appendChild(fragment);
+  }
 
   // В блок .popup__photos выведите все фотографии из списка offer.photos. Каждая из строк массива photos должна записываться как атрибут src соответствующего изображения.
-  const photoSrc = paramAdvertisement.offer.photos;
-  const photosContainer = cardElement.querySelector('.popup__photos');
-  const photo = photosContainer.querySelector('.popup__photo');
-
-  photoSrc.forEach((value, index) => {
-    if (index === 0) {
-      photo.src = value;
-    } else {
-      const photoClone = photo.cloneNode();
-      photoClone.src = value;
-      photosContainer.append(photoClone);
-    }
-  });
-
+  const photosContainerElement = cardElement.querySelector('.popup__photos');
+  if (paramAdvertisement.offer.photos.length === 0) {
+    photosContainerElement.remove();
+  } else {
+    const photoElement = cardElement.querySelector('.popup__photo');
+    const photoFragment = document.createDocumentFragment();
+    paramAdvertisement.offer.photos.forEach((photoSrc) => {
+      const photoItem = photoElement.cloneNode(true);
+      photoItem.src = photoSrc;
+      photoFragment.appendChild(photoItem);
+    });
+    photoElement.remove();
+    photosContainerElement.appendChild(photoFragment);
+  }
   return cardElement;
 };
 
