@@ -6,4 +6,5 @@ export default {
   MAX_ROOMS: 6,
   FOREVER_ALONE: 1,
   MAX_GUESTS: 6,
+  MAX_AVATAR: 10,
 };

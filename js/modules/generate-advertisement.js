@@ -1,8 +1,16 @@
 import { getRandomPositiveInteger, getRandomPositiveFloat } from './utils.js';
 import { avatarsImg } from './avatar.js';
 import constants from '../constants.js';
-import { title, types, checking, checkouts, description, features, photos } from './data.js';
-import { getNewArrayItems } from './form.js';
+import {
+  title,
+  types,
+  checkins,
+  checkouts,
+  description,
+  features,
+  photos,
+  getNewArrayItems,
+} from './data.js';
 
 export const generateAdvertisement = () => {
   const randomIndex = getRandomPositiveInteger(0, avatarsImg.length - 1);
@@ -27,7 +35,7 @@ export const generateAdvertisement = () => {
       constants.MAX_GUESTS,
       0
     ),
-    checked: checking[getRandomPositiveInteger(0, checking.length - 1)],
+    checkin: checkins[getRandomPositiveInteger(0, checkins.length - 1)],
     checkout: checkouts[getRandomPositiveInteger(0, checkouts.length - 1)],
     features: getNewArrayItems(features),
     description: description,
@@ -41,9 +49,10 @@ export const generateAdvertisement = () => {
   };
 };
 
-export const similarAdvertisement = () => Array.from(
-  {
-    length: constants.LIMITED_NUMBER_ADVERTISEMENT,
-  },
-  generateAdvertisement
-);
+export const generateArrayAdvertisments = (advertisementCount) =>
+  Array.from(
+    {
+      length: advertisementCount
+    },
+    generateAdvertisement
+  );

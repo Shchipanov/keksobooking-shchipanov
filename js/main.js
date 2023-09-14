@@ -1,10 +1,15 @@
-import {
-  similarAdvertisement
-} from './modules/arrays.js';
-import { typeHabitations } from './modules/popup.js';
+import constants from './constants.js';
+import { generateArrayAdvertisments } from './modules/generate-advertisement.js';
+import { createCardElement,renderCard } from './modules/popup.js';
+import { makesDisabledForm } from './form.js';
 
-// eslint-disable-next-line no-console
-console.log(similarAdvertisement());
-// eslint-disable-next-line no-console
-console.log(typeHabitations);
+//вызываем функцию генерации данных
+const advertisments = generateArrayAdvertisments(constants.LIMITED_NUMBER_ADVERTISEMENT);
 
+/** Создание карточки */
+const cardElements = advertisments.map(createCardElement);
+
+/** Отрисовать на карте 1 карточку */
+renderCard(cardElements[1]);
+
+makesDisabledForm();
