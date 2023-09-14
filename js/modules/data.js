@@ -1,25 +1,47 @@
-// Модуль с известными значениями - условия задачи
+import { getRandomPositiveInteger } from './utils.js';
+
+// работа с массивами
+/**
+ * Функция перемешивает элементы массива
+ * источник - https://habr.com/ru/post/358094/
+ * @param {number} j - выбор случайного элемента
+ */
+
+const shuffle = (arrayCopy) => {
+  let j, temp;
+  //перебираем массив с последнего элемента
+  for (let i = arrayCopy.length - 1; i > 0; i--) {
+    //выбираем случайный элемент массива - j
+    j = Math.floor(Math.random() * (i + 1));
+    // меняем местами с последним элементом
+    temp = arrayCopy[j];
+    arrayCopy[j] = arrayCopy[i];
+    arrayCopy[i] = temp;
+  }
+  return arrayCopy;
+};
+
+/**
+ * Функция создает копию массива с другим количеством и порядком элементов
+ */
+export const getNewArrayItems = (array) => {
+  //создаем копию
+  const arrayCopy = array.slice();
+  //перемешиваем
+  shuffle(arrayCopy);
+  //случайное число
+  const randomIndexItem = getRandomPositiveInteger(0, arrayCopy.length - 1);
+  //возвращаем новый массив без случайного количества элементов
+  return arrayCopy.slice(randomIndexItem);
+};
+
 
 // Массивы
-export const types = [
-  'palace',
-  'flat',
-  'house',
-  'bungalow',
-  'hotel'
-];
+export const types = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 
-export const checking = [
-  '12:00',
-  '13:00',
-  '14:00'
-];
+export const checkins = ['12:00', '13:00', '14:00'];
 
-export const checkouts = [
-  '12:00',
-  '13:00',
-  '14:00'
-];
+export const checkouts = ['12:00', '13:00', '14:00'];
 
 export const features = [
   'wifi',
@@ -27,7 +49,7 @@ export const features = [
   'parking',
   'washer',
   'elevator',
-  'conditioner'
+  'conditioner',
 ];
 
 export const photos = [
