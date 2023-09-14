@@ -1,7 +1,7 @@
 import constants from './constants.js';
 import { generateArrayAdvertisments } from './modules/generate-advertisement.js';
 import { createCardElement,renderCard } from './modules/popup.js';
-import { makesDisabledForm } from './form.js';
+//import { makesDisabledForm } from './form.js';
 
 //вызываем функцию генерации данных
 const advertisments = generateArrayAdvertisments(constants.LIMITED_NUMBER_ADVERTISEMENT);
@@ -10,6 +10,6 @@ const advertisments = generateArrayAdvertisments(constants.LIMITED_NUMBER_ADVERT
 const cardElements = advertisments.map(createCardElement);
 
 /** Отрисовать на карте 1 карточку */
-renderCard(cardElements[1]);
+renderCard(cardElements[0]);
 
-makesDisabledForm();
+//makesDisabledForm();
