@@ -41,4 +41,4 @@ const enableMapFilters = () => {
   }
 };
 
-export {disableForm, disableMapFilters};
+export { disableForm, disableMapFilters, enableForm };
