@@ -7,4 +7,9 @@ export default {
   FOREVER_ALONE: 1,
   MAX_GUESTS: 6,
   MAX_AVATAR: 10,
+  COORDINATE_MAP: {
+    lat: 35.68952,
+    lng: 139.69199,
+  },
+  COUNT_MAP_ZOOM: 12,
 };

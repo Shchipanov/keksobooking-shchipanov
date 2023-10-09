@@ -1,6 +1,11 @@
+import { createSlider } from './slider.js';
+
 /** Перевод формы в неактивное состояние */
 const formElement = document.querySelector('.ad-form');
 const fieldsetElements = formElement.querySelectorAll('fieldset');
+
+const sliderElement = document.querySelector('.ad-form__slider');
+const valueElement = document.querySelector('.ad-form__value');
 
 // TODO Слайдер также должен быть заблокирован - он в fieldset. Дополнительная блокирвока по классу ad-form__slider не сделана.
 /** Перевод формы в неактивное состояние */
@@ -41,4 +46,12 @@ const enableMapFilters = () => {
   }
 };
 
-export { disableForm, disableMapFilters, enableForm };
+//создание слайдера
+createSlider(sliderElement, valueElement);
+
+//объединит все действия с формой: слайдер, валидация
+const initForm = () => {
+
+};
+
+export { disableForm, disableMapFilters, enableForm, initForm };
