@@ -24,7 +24,7 @@ pristine.addValidator(formElement.querySelector('#price'), validatePrice, 'Ма�
 // 3 комнаты — «для 3 гостей», «для 2 гостей» или «для 1 гостя»;
 // 100 комнат — «не для гостей».
 
-const validateRoomNumber = function (value) {
+const validateRoomNumber = (value) => {
   const capacityValue = formElement.querySelector('#capacity').value;
 
   if (value === '1') {
@@ -40,7 +40,7 @@ const validateRoomNumber = function (value) {
   }
 };
 
-const getRoomNumberErrorMessage = function (value) {
+const getRoomNumberErrorMessage = (value) => {
   if (value === '1') {
     return 'Для 1 гостя';
   } else if (value === '2') {

@@ -1,4 +1,4 @@
-import { mapElement } from './map.js';
+// import { mapElement } from './map.js';
 
 // шаблон #card, забираем то что будем копировать
 const elementTemplate = document
@@ -14,7 +14,7 @@ const typeHabitations = {
   hotel: 'Отель',
 };
 
-export const createCardElement = (paramAdvertisement) => {
+const createCardElement = (paramAdvertisement) => {
   const cardElement = elementTemplate.cloneNode(true);
 
   const titleElement = cardElement.querySelector('.popup__title');
@@ -86,6 +86,9 @@ export const createCardElement = (paramAdvertisement) => {
   return cardElement;
 };
 
-export const renderCard = (paramElements) => {
+/*export const renderCard = (paramElements) => {
   mapElement.appendChild(paramElements);
-};
+};*/
+
+export {createCardElement};
+
