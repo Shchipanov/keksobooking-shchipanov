@@ -1,6 +1,6 @@
 // export const mapElement = document.querySelector('#map-canvas');
 
-// import {  enableForm } from './form.js';
+import {  enableForm } from './form.js';
 import { createCardElement } from './cards.js';
 const formElement = document.querySelector('.ad-form');
 
@@ -31,15 +31,19 @@ const pinMarkerElement = L.marker(
   }
 );
 
-/** Отрисовка карты */
-const initMap = (coordinate) => {
-  map.setView(coordinate, 10);
-  L.tileLayer(
-    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    },
-  ).addTo(map);
+/** Отрисовка карты
+ * @param {object} coordinate geographical coordinates
+ * @param {Number} count  zoom level
+ */
+const initMap = (coordinate, count) => {
+  map.on('load', () => {
+    enableForm();
+  });
+  map.setView(coordinate, count);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
   pinMarkerElement.setLatLng(coordinate).addTo(map);
 };
 
