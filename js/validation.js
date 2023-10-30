@@ -121,4 +121,3 @@ formElement.addEventListener('submit', (evt) => {
   evt.preventDefault();
   pristine.validate();
 });
-
