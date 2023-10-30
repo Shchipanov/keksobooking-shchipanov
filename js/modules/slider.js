@@ -29,12 +29,12 @@ const createSlider = (paramElement, paramInput) => {
 };
 
 // //обновление значения слайдера
-// valueElement.addEventListener('input', () => {
-//   sliderElement.noUiSlider.updateOptions(
-//     {
-//       start: `${valueElement.value}`
-//     }
-//   );
-// });
+/*valueElement.addEventListener('input', () => {
+  sliderElement.noUiSlider.updateOptions(
+    {
+      start: `${valueElement.value}`
+    }
+  );
+});*/
 
 export { createSlider };

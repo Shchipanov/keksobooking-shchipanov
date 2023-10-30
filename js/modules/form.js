@@ -54,4 +54,12 @@ const initForm = () => {
 
 };
 
+valueElement.addEventListener('input', () => {
+  sliderElement.noUiSlider.updateOptions(
+    {
+      start: `${valueElement.value}`
+    }
+  );
+});
+
 export { disableForm, disableMapFilters, enableForm, initForm };
