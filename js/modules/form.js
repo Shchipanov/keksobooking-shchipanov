@@ -7,6 +7,9 @@ const fieldsetElements = formElement.querySelectorAll('fieldset');
 const sliderElement = document.querySelector('.ad-form__slider');
 const valueElement = document.querySelector('.ad-form__value');
 
+//создание слайдера
+createSlider(sliderElement, valueElement);
+
 // TODO Слайдер также должен быть заблокирован - он в fieldset. Дополнительная блокирвока по классу ad-form__slider не сделана.
 /** Перевод формы в неактивное состояние */
 const disableForm = () => {
@@ -46,8 +49,6 @@ const enableMapFilters = () => {
   }
 };
 
-//создание слайдера
-createSlider(sliderElement, valueElement);
 
 //объединит все действия с формой: слайдер, валидация
 const initForm = () => {
