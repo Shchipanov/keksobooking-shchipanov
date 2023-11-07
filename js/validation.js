@@ -119,5 +119,13 @@ pristine.addValidator(formElement.querySelector('#type'), validateType);
 
 formElement.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  pristine.validate();
+  //pristine.validate();
+  const isValid = pristine.validate();
+  if (isValid) {
+    // eslint-disable-next-line no-console
+    console.log('Можно отправлять');
+  } else {
+    // eslint-disable-next-line no-console
+    console.log('Форма невалидна');
+  }
 });

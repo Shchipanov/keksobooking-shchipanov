@@ -1,0 +1,3 @@
+GET /secret-page HTTP/1.1
+Host: myserver.local
+Authorization: Basic YWRtaW46MTIzNDU2

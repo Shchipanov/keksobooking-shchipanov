@@ -1,12 +1,12 @@
 import constants from './constants.js';
-import { generateArrayAdvertisments } from './modules/generate-advertisement.js';
+//import { generateArrayAdvertisments } from './modules/generate-advertisement.js';
 // import { createCardElement,renderCard } from './modules/popup.js';
 import { disableForm } from './modules/form.js';
 import './validation.js';
-import { initMap, addPoints } from './modules/map.js';
+//import { initMap, addPoints } from './modules/map.js';
 
 //вызываем функцию генерации данных
-const advertisments = generateArrayAdvertisments(constants.LIMITED_NUMBER_ADVERTISEMENT);
+//const advertisments = generateArrayAdvertisments(constants.LIMITED_NUMBER_ADVERTISEMENT);
 
 /** Создание карточки */
 // const cardElements = advertisments.map(createCardElement);
@@ -22,6 +22,13 @@ disableForm();
 // disableMapFilters();
 
 
-initMap(constants.COORDINATE_MAP, constants.COUNT_MAP_ZOOM);
+//initMap(constants.COORDINATE_MAP, constants.COUNT_MAP_ZOOM);
 
-addPoints(advertisments);
+//addPoints(advertisments);
+
+fetch('https://26.javascript.pages.academy/keksobooking/data')
+  .then((response) => response.json())
+  .then((advertisments) => {
+    // eslint-disable-next-line no-console
+    console.log(advertisments);
+  });
