@@ -1,10 +1,10 @@
 import constants from './constants.js';
 import { generateArrayAdvertisments } from './modules/generate-advertisement.js';
 // import { createCardElement,renderCard } from './modules/popup.js';
-import { disableForm } from './modules/form.js';
+import { disableStatePage } from './modules/form.js';
 import './validation.js';
 import { initMap, addPoints } from './modules/map.js';
-import { sendForm } from './form-validation.js';
+import { sendForm } from './validation.js';
 
 //вызываем функцию генерации данных
 const advertisments = generateArrayAdvertisments(constants.LIMITED_NUMBER_ADVERTISEMENT);
@@ -16,7 +16,7 @@ const advertisments = generateArrayAdvertisments(constants.LIMITED_NUMBER_ADVERT
 // renderCard(cardElements[0]);
 
 /**При открытии страница находится в неактивном состоянии */
-disableForm();
+disableStatePage();
 // disableMapFilters();
 
 //Блокировка формы с фильтрами

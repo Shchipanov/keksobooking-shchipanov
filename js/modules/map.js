@@ -1,30 +1,22 @@
-// export const mapElement = document.querySelector('#map-canvas');
-
-import {  enableForm } from './form.js';
+import {  enableStatePage } from './form.js';
 import { createCardElement } from './cards.js';
+import constants from '../constants.js';
+
+const addressElement = document.querySelector('#address');
 const formElement = document.querySelector('.ad-form');
 
 const map = L.map('map-canvas');
 const markerGroup = L.layerGroup().addTo(map);
 
-// Отрисована метка
+// Главная метка
 const pinIconElement = L.icon({
   iconUrl: './img/main-pin.svg',
   iconSize: [52, 52],
   iconAnchor: [26, 52],
 });
-// eslint-disable-next-line no-unused-vars
-const pinIconSimilarElement = L.icon({
-  iconUrl: './img/pin.svg',
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
-});
 
 const pinMarkerElement = L.marker(
-  {
-    lat: 0,
-    lng: 0,
-  },
+  constants.COORDINATE_MAP,
   {
     draggable: true,
     icon: pinIconElement,
@@ -37,7 +29,7 @@ const pinMarkerElement = L.marker(
  */
 const initMap = (coordinate, count) => {
   map.on('load', () => {
-    enableForm();
+    enableStatePage();
   });
   map.setView(coordinate, count);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -54,7 +46,13 @@ pinMarkerElement.on('moveend', (evt) => {
   )}, ${lng.toFixed(5)}`;
 });
 
-/** Создание метки и прикрепление объявления к ней */
+// отрисовка похожих объявлений
+const pinIconSimilarElement = L.icon({
+  iconUrl: './img/pin.svg',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
+
 const createMarker = (paramPoint) => {
   const { lat, lng } = paramPoint.location;
   const marker = L.marker(
@@ -63,7 +61,7 @@ const createMarker = (paramPoint) => {
       lng,
     },
     {
-      pinIconElement,
+      pinIconSimilarElement,
     }
   );
   marker.addTo(markerGroup).bindPopup(createCardElement(paramPoint));
@@ -75,7 +73,15 @@ const addPoints = (paramData) => {
   });
 };
 
-//не подключено
-markerGroup.clearLayers();
+//возврат начальных значений
+const resetMap = () => {
+  addressElement.value = `${constants.COORDINATE_MAP.lat}, ${constants.COORDINATE_MAP.lng}`;
+  pinMarkerElement.setLatLng(constants.COORDINATE_MAP);
+  map.setView(constants.COORDINATE_MAP, constants.COUNT_MAP_ZOOM);
+};
 
-export { initMap, addPoints, markerGroup };
+const clearPinMarkers = () => {
+  markerGroup.clearLayers();
+};
+
+export { initMap, addPoints, clearPinMarkers, resetMap };

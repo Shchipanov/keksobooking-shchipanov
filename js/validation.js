@@ -1,4 +1,4 @@
-import { sendData } from './api.js';
+import { sendData } from './modules/api.js';
 import constants from './constants.js';
 
 const formElement = document.querySelector('.ad-form');
@@ -11,6 +11,7 @@ const typeElement = formElement.querySelector('#type');
 const timeParentElement = formElement.querySelector('.ad-form__element--time');
 const timeInElement = formElement.querySelector('#timein');
 const timeOutElement = formElement.querySelector('#timeout');
+const addressElement = document.querySelector('#address');
 
 const pristine = new Pristine(formElement, {
   classTo: 'ad-form__element',
@@ -146,6 +147,8 @@ timeParentElement.addEventListener('change', (evt) => {
   timeOutElement.value = evt.target.value;
 });
 
+// Запрет ручного редактирования поля Адрес(координаты)
+addressElement.readonly = true;
 
 // Если при отправке данных произошла ошибка запроса,
 // показывается соответствующее сообщение. Разметку сообщения,
