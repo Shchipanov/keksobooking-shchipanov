@@ -9,7 +9,7 @@ const getData = (onSuccess, onFail) => {
     });
 };
 
-const sendData = (onSuccess, onFail, body) => {
+const sendData = (body, onSuccess, onFail) => {
   fetch('https://26.javascript.pages.academy/keksobooking', {
     method: 'POST',
     body: body,
