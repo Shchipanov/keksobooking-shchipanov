@@ -1,8 +1,10 @@
-import { createSlider } from './slider.js';
+import { createSlider, disableSlider, enableSlider } from './slider.js';
 
 /** Перевод формы в неактивное состояние */
 const formElement = document.querySelector('.ad-form');
 const fieldsetElements = formElement.querySelectorAll('fieldset');
+const formFilterElement = document.querySelector('.map__filters ');
+const fildsetFilterElements = formFilterElement.querySelectorAll('select, input');
 
 const sliderElement = document.querySelector('.ad-form__slider');
 const valueElement = document.querySelector('.ad-form__value');
@@ -10,18 +12,29 @@ const valueElement = document.querySelector('.ad-form__value');
 //создание слайдера
 createSlider(sliderElement, valueElement);
 
-// TODO Слайдер также должен быть заблокирован - он в fieldset. Дополнительная блокирвока по классу ad-form__slider не сделана.
-/** Перевод формы в неактивное состояние */
-const disableForm = () => {
-  formElement.classList.add('ad-form--disabled');
-  for (const fieldElement of fieldsetElements) {
-    fieldElement.disabled = true;
-  }
+//Состояния страницы
+const disableElement = (form, fields) => {
+  form.classList.add(`${form.className}--disabled`);
+  fields.forEach((fild) => {
+    fild.disabled = true;
+  });
 };
 
-/** Перевод формы в активное состояние */
-// TODO временное отключение проверки
-// eslint-disable-next-line no-unused-vars
+/** Приводит страницу в неактивное состояние */
+const disableStatePage = () => {
+  disableElement (formElement, fieldsetElements);
+  disableElement (formFilterElement, fildsetFilterElements);
+  disableSlider(sliderElement);
+};
+
+//todo есть дублирование кода. Не понятно как писать - classList.remove('.....-form--disabled')
+const enableFilterForm = () => {
+  formFilterElement.classList.remove('map__filters--disabled');
+  fildsetFilterElements.forEach((fildsetFilterElement) => {
+    fildsetFilterElement.disabled = false;
+  });
+};
+
 const enableForm = () => {
   formElement.classList.remove('ad-form--disabled');
   for (const fieldElement of fieldsetElements) {
@@ -29,24 +42,11 @@ const enableForm = () => {
   }
 };
 
-/** Блокировка формы с фильтрами */
-const filterElement = document.querySelector('.map__filters');
-const selectElements = filterElement.querySelectorAll('select');
-const disableMapFilters = () => {
-  filterElement.classList.add('map__filters--disabled');
-  for (const selectElement of selectElements) {
-    selectElement.disabled = true;
-  }
-};
-
-/** Разблокировка формы с фильтрами */
-// TODO временное отключение проверки
-// eslint-disable-next-line no-unused-vars
-const enableMapFilters = () => {
-  filterElement.classList.remove('map__filters--disabled');
-  for (const selectElement of selectElements) {
-    selectElement.disabled = false;
-  }
+/** Приводит страницу в активное состояние */
+const enableStatePage = () => {
+  enableForm();
+  enableFilterForm();
+  enableSlider(sliderElement);
 };
 
 
@@ -55,12 +55,4 @@ const initForm = () => {
 
 };
 
-valueElement.addEventListener('input', () => {
-  sliderElement.noUiSlider.updateOptions(
-    {
-      start: `${valueElement.value}`
-    }
-  );
-});
-
-export { disableForm, disableMapFilters, enableForm, initForm };
+export { disableStatePage, enableStatePage, initForm };
