@@ -49,10 +49,10 @@ export const generateAdvertisement = () => {
   };
 };
 
-export const generateArrayAdvertisments = (advertisementCount) =>
+/*export const generateArrayAdvertisments = (advertisementCount) =>
   Array.from(
     {
       length: advertisementCount
     },
     generateAdvertisement
-  );
+  );*/

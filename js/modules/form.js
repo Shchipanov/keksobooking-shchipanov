@@ -1,58 +1,43 @@
-import { createSlider, disableSlider, enableSlider } from './slider.js';
+import { createSlider } from './form-slider.js';
 
 /** Перевод формы в неактивное состояние */
 const formElement = document.querySelector('.ad-form');
 const fieldsetElements = formElement.querySelectorAll('fieldset');
-const formFilterElement = document.querySelector('.map__filters ');
-const fildsetFilterElements = formFilterElement.querySelectorAll('select, input');
 
-const sliderElement = document.querySelector('.ad-form__slider');
-const valueElement = document.querySelector('.ad-form__value');
-
-//создание слайдера
-createSlider(sliderElement, valueElement);
-
-//Состояния страницы
-const disableElement = (form, fields) => {
-  form.classList.add(`${form.className}--disabled`);
-  fields.forEach((fild) => {
-    fild.disabled = true;
-  });
-};
-
-/** Приводит страницу в неактивное состояние */
-const disableStatePage = () => {
-  disableElement (formElement, fieldsetElements);
-  disableElement (formFilterElement, fildsetFilterElements);
-  disableSlider(sliderElement);
-};
-
-//todo есть дублирование кода. Не понятно как писать - classList.remove('.....-form--disabled')
-const enableFilterForm = () => {
-  formFilterElement.classList.remove('map__filters--disabled');
-  fildsetFilterElements.forEach((fildsetFilterElement) => {
-    fildsetFilterElement.disabled = false;
+const disableForm = () => {
+  formElement.classList.add('ad-form--disabled');
+  fieldsetElements.forEach((fieldElement) => {
+    fieldElement.disabled = true;
   });
 };
 
 const enableForm = () => {
   formElement.classList.remove('ad-form--disabled');
-  for (const fieldElement of fieldsetElements) {
+  fieldsetElements.forEach((fieldElement) => {
     fieldElement.disabled = false;
-  }
+  });
 };
-
-/** Приводит страницу в активное состояние */
-const enableStatePage = () => {
-  enableForm();
-  enableFilterForm();
-  enableSlider(sliderElement);
-};
-
 
 //объединит все действия с формой: слайдер, валидация
 const initForm = () => {
-
+  createSlider();
 };
 
-export { disableStatePage, enableStatePage, initForm };
+// TODO Nikolay: плохой нейминг
+// eslint-disable-next-line
+const sendForm = () => {
+  formElement.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    // eslint-disable-next-line
+    const formData = new FormData(evt.target);
+    // eslint-disable-next-line
+    if (pristine.validate()) {
+      // TODO вставить заглушки Nikolay
+      // sendData(formDate, () => {}, () => {});
+
+      // sendData(formData, displayMessageError);
+    }
+  });
+};
+
+export { disableForm, enableForm, initForm };
