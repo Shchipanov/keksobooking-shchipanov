@@ -1,14 +1,14 @@
-import {  enableStatePage } from './form.js';
+import { enableForm } from './form.js';
 import { createCardElement } from './cards.js';
 import constants from '../constants.js';
+import { enableFilterForm } from './form-filter.js';
+import { enableSlider } from './form-slider.js';
 
 const addressElement = document.querySelector('#address');
 const formElement = document.querySelector('.ad-form');
-
 const map = L.map('map-canvas');
-const markerGroup = L.layerGroup().addTo(map);
 
-// Главная метка
+// блок отрисовки главной метки
 const pinIconElement = L.icon({
   iconUrl: './img/main-pin.svg',
   iconSize: [52, 52],
@@ -23,13 +23,20 @@ const pinMarkerElement = L.marker(
   }
 );
 
+/** перевод страницы в активное состояние */
+const enablePage = () => {
+  enableForm();
+  enableFilterForm();
+  enableSlider();
+};
+
 /** Отрисовка карты
  * @param {object} coordinate geographical coordinates
  * @param {Number} count  zoom level
  */
 const initMap = (coordinate, count) => {
   map.on('load', () => {
-    enableStatePage();
+    enablePage();
   });
   map.setView(coordinate, count);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -46,7 +53,10 @@ pinMarkerElement.on('moveend', (evt) => {
   )}, ${lng.toFixed(5)}`;
 });
 
-// отрисовка похожих объявлений
+/**Создание слоя и добавление на карту */
+const markerGroup = L.layerGroup().addTo(map);
+
+// блок отрисовки похожих объявлений
 const pinIconSimilarElement = L.icon({
   iconUrl: './img/pin.svg',
   iconSize: [40, 40],
@@ -73,15 +83,13 @@ const addPoints = (paramData) => {
   });
 };
 
-//возврат начальных значений
+// возвращает начальные значения
 const resetMap = () => {
   addressElement.value = `${constants.COORDINATE_MAP.lat}, ${constants.COORDINATE_MAP.lng}`;
   pinMarkerElement.setLatLng(constants.COORDINATE_MAP);
   map.setView(constants.COORDINATE_MAP, constants.COUNT_MAP_ZOOM);
 };
 
-const clearPinMarkers = () => {
-  markerGroup.clearLayers();
-};
+const clearPinMarkers = () => markerGroup.clearLayers();
 
 export { initMap, addPoints, clearPinMarkers, resetMap };
