@@ -7,7 +7,7 @@ export default {
   FOREVER_ALONE: 1,
   MAX_GUESTS: 6,
   MAX_AVATAR: 10,
-  MESSAGE_TIME: 1000,
+  MESSAGE_TIME: 2000,
   NUMBER_MARKERS: 10,
   TITLE_MIN: 30,
   TITLE_MAX: 100,
@@ -16,4 +16,6 @@ export default {
     lng: 139.69199,
   },
   COUNT_MAP_ZOOM: 12,
+  RERENDER_DELAY: 500,
+  FILE_TYPES: ['gif', 'jpg', 'jpeg', 'png'],
 };

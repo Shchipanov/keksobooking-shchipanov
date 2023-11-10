@@ -146,11 +146,4 @@ timeParentElement.addEventListener('change', (evt) => {
   timeOutElement.value = evt.target.value;
 });
 
-// Запрет ручного редактирования поля Адрес(координаты)
-//addressElement.readonly = true;
-
-const validateForm = () => {
-  pristine.validate();
-};
-
-export { validateForm };
+export { pristine };

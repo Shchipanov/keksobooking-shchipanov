@@ -9,10 +9,10 @@ const getData = (onSuccess, onFail) => {
     });
 };
 
-const sendData = (body, onSuccess, onFail) => {
+const sendData = (onSuccess, onFail, body) => {
   fetch('https://26.javascript.pages.academy/keksobooking', {
     method: 'POST',
-    body: body,
+    body,
   })
     .then((response) => {
       if (response.ok) {
