@@ -17,5 +17,5 @@ export default {
   },
   COUNT_MAP_ZOOM: 12,
   RERENDER_DELAY: 500,
-  FILE_TYPES: ['gif', 'jpg', 'jpeg', 'png'],
+  IMAGE_FILE_TYPES: ['gif', 'jpg', 'jpeg', 'png'],
 };
