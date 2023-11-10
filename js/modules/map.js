@@ -43,6 +43,7 @@ const initMap = (coordinate, count) => {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
+  addressElement.value = `${constants.COORDINATE_MAP.lat}, ${constants.COORDINATE_MAP.lng}`;
   pinMarkerElement.setLatLng(coordinate).addTo(map);
 };
 

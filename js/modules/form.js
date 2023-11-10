@@ -3,6 +3,7 @@ import { initSlider, resetSlider } from './form-slider.js';
 import { pristine } from '../form-validation.js';
 import { displayMessageError } from './message.js';
 import { resetMap } from './map.js';
+import { setImageHouse, setImageAvatar } from './images.js';
 
 /** Перевод формы в неактивное состояние */
 const formElement = document.querySelector('.ad-form');
@@ -52,6 +53,8 @@ const initForm = () => {
   initSlider();
   addressElement.readonly = true;
   resetFormButton();
+  setImageHouse();
+  setImageAvatar();
 };
 
 const setUserFormSubmit = (onSuccess) => {

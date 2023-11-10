@@ -16,4 +16,6 @@ export default {
     lng: 139.69199,
   },
   COUNT_MAP_ZOOM: 12,
+  RERENDER_DELAY: 500,
+  FILE_TYPES: ['gif', 'jpg', 'jpeg', 'png'],
 };
