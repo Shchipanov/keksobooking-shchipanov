@@ -7,7 +7,7 @@ const avatarPreviewElement = document
 const houseImageChooserElement = document.querySelector('.ad-form__input');
 const houseImagePreviewElement = document.querySelector('.ad-form__photo');
 
-const setImageAvatar = () => {
+const addAvatarLoader = () => {
   avatarImageChooserElement.addEventListener('change', () => {
     const file = avatarImageChooserElement.files[0];
     const fileName = file.name.toLowerCase();
@@ -19,7 +19,7 @@ const setImageAvatar = () => {
   });
 };
 
-const setImageHouse = () => {
+const addImageHouseLoader = () => {
   houseImageChooserElement.addEventListener('change', () => {
     const file = houseImageChooserElement.files[0];
     const fileName = file.name.toLowerCase();
@@ -37,4 +37,4 @@ const setImageHouse = () => {
   });
 };
 
-export { setImageHouse, setImageAvatar };
+export { addImageHouseLoader, addAvatarLoader };
