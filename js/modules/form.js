@@ -1,8 +1,12 @@
-import { createSlider } from './form-slider.js';
+import { sendData } from './api.js';
+import { initSlider } from './form-slider.js';
+import { validateForm } from '../form-validation.js';
+import { displayMessageError } from './message.js';
 
 /** Перевод формы в неактивное состояние */
 const formElement = document.querySelector('.ad-form');
 const fieldsetElements = formElement.querySelectorAll('fieldset');
+const addressElement = document.querySelector('#address');
 
 const disableForm = () => {
   formElement.classList.add('ad-form--disabled');
@@ -20,24 +24,27 @@ const enableForm = () => {
 
 //объединит все действия с формой: слайдер, валидация
 const initForm = () => {
-  createSlider();
+  initSlider();
+  addressElement.readonly = true;
 };
 
-// TODO Nikolay: плохой нейминг
-// eslint-disable-next-line
-const sendForm = () => {
+const setUserFormSubmit = (onSuccess) => {
   formElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    // eslint-disable-next-line
-    const formData = new FormData(evt.target);
-    // eslint-disable-next-line
-    if (pristine.validate()) {
-      // TODO вставить заглушки Nikolay
-      // sendData(formDate, () => {}, () => {});
 
-      // sendData(formData, displayMessageError);
+    const isValid = validateForm();
+    if (isValid) {
+      sendData(
+        new FormData(evt.target),
+        () => {
+          onSuccess();
+        },
+        () => {
+          displayMessageError();
+        }
+      );
     }
   });
 };
 
-export { disableForm, enableForm, initForm };
+export { disableForm, enableForm, initForm, setUserFormSubmit };

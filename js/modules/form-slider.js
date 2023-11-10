@@ -3,7 +3,7 @@ import constants from '../constants.js';
 const sliderElement = document.querySelector('.ad-form__slider');
 const valueElement = document.querySelector('.ad-form__value');
 
-const createSlider = () => {
+const initSlider = () => {
   noUiSlider.create(sliderElement, {
     range: {
       min: 0,
@@ -32,14 +32,14 @@ const createSlider = () => {
 
 const disableSlider = () => {
   sliderElement.setAttribute('disabled', '');
-  const origins = sliderElement.querySelectorAll('.noUi-origin');
-  origins[0].setAttribute('disabled', '');
+  //const origins = sliderElement.querySelectorAll('.noUi-origin');
+  //origins[0].setAttribute('disabled', '');
 };
 
 const enableSlider = () => {
   sliderElement.removeAttribute('disabled');
-  const origins = sliderElement.querySelectorAll('.noUi-origin');
-  origins[0].removeAttribute('disabled');
+  //const origins = sliderElement.querySelectorAll('.noUi-origin');
+  //origins[0].removeAttribute('disabled');
 };
 
-export { createSlider, enableSlider, disableSlider };
+export { initSlider, enableSlider, disableSlider };

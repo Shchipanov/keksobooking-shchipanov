@@ -78,7 +78,7 @@ const createMarker = (paramPoint) => {
 };
 
 const addPoints = (paramData) => {
-  paramData.forEach((paramPoint) => {
+  paramData.slice(0, constants.NUMBER_MARKERS).forEach((paramPoint) => {
     createMarker(paramPoint);
   });
 };

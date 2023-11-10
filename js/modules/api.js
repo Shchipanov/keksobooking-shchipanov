@@ -1,6 +1,3 @@
-// отправка и получение данных getDat sendData - две функции
-// import {displayMessageError, displayMessageSuccess } from './message.js';
-
 const getData = (onSuccess, onFail) => {
   fetch('https://26.javascript.pages.academy/keksobooking/data')
     .then((response) => response.json())
