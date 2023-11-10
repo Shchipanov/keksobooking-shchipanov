@@ -10,7 +10,7 @@ const errorTemplate = document
 /**Создает сообщение об успешно отправленной форме */
 const displayMessageSuccess = () => {
   const successMessageElement = successTemplate.cloneNode(true);
-  document.appendChild(successMessageElement);
+  document.body.appendChild(successMessageElement);
 
   setTimeout(() => {
     successMessageElement.remove();

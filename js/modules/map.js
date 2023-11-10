@@ -81,6 +81,7 @@ const addPoints = (paramData) => {
   paramData.slice(0, constants.NUMBER_MARKERS).forEach((paramPoint) => {
     createMarker(paramPoint);
   });
+  pinMarkerElement.addTo(markerGroup);
 };
 
 // возвращает начальные значения

@@ -32,14 +32,16 @@ const initSlider = () => {
 
 const disableSlider = () => {
   sliderElement.setAttribute('disabled', '');
-  //const origins = sliderElement.querySelectorAll('.noUi-origin');
-  //origins[0].setAttribute('disabled', '');
 };
 
 const enableSlider = () => {
   sliderElement.removeAttribute('disabled');
-  //const origins = sliderElement.querySelectorAll('.noUi-origin');
-  //origins[0].removeAttribute('disabled');
 };
 
-export { initSlider, enableSlider, disableSlider };
+const resetSlider = () => {
+  sliderElement.noUiSlider.updateOptions({
+    start: 0,
+  });
+};
+
+export { initSlider, enableSlider, disableSlider, resetSlider };
