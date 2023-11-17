@@ -1,3 +1,5 @@
+import constants from '../constants.js';
+
 const getData = (onSuccess, onFail) => {
   fetch('https://26.javascript.pages.academy/keksobooking/data')
     .then((response) => response.json())
@@ -18,11 +20,11 @@ const sendData = (onSuccess, onFail, body) => {
       if (response.ok) {
         onSuccess();
       } else {
-        onFail('Форма не отправлена. Попробуйте еще раз.');
+        onFail(constants.ERROR_MESSAGE);
       }
     })
     .catch(() => {
-      onFail('Форма не отправлена. Попробуйте еще раз.');
+      onFail(constants.ERROR_MESSAGE);
     });
 };
 
