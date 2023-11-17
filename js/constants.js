@@ -16,6 +16,7 @@ export default {
     lng: 139.69199,
   },
   COUNT_MAP_ZOOM: 12,
-  RERENDER_DELAY: 500,
+  DEBOUNCE_DELAY: 500,
   IMAGE_FILE_TYPES: ['gif', 'jpg', 'jpeg', 'png'],
+  ERROR_MESSAGE: 'Форма не отправлена. Попробуйте еще раз.',
 };
