@@ -3,7 +3,7 @@ import { initSlider, resetSlider } from './form-slider.js';
 import { pristine } from '../form-validation.js';
 import { displayMessageError } from './message.js';
 import { resetMap } from './map.js';
-import { addImageHouseLoader, addAvatarLoader } from './image.js';
+import { addImageHouseLoader, addAvatarLoader, clearPreview } from './image.js';
 
 /** Перевод формы в неактивное состояние */
 const formElement = document.querySelector('.ad-form');
@@ -38,6 +38,7 @@ const resetForm = () => {
   formElement.reset();
   pristine.reset();
   resetMap();
+  clearPreview();
   resetSlider();
 };
 

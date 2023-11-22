@@ -19,4 +19,16 @@ export default {
   DEBOUNCE_DELAY: 500,
   IMAGE_FILE_TYPES: ['gif', 'jpg', 'jpeg', 'png'],
   ERROR_MESSAGE: 'Форма не отправлена. Попробуйте еще раз.',
+  PRICE_TYPE: {
+    ANY: 'any',
+    LOW: 'low',
+    MIDDLE: 'middle',
+    HIGH: 'high',
+  },
+  PRICE_RANGE: {
+    MIDDLE: 10000,
+    HIGH: 50000,
+  },
+  DEFAULT_AVATAR: 'img/muffin-grey.svg',
+  MAX_POINTS_RENDER_LIMIT: 10,
 };
