@@ -1,4 +1,4 @@
-import constants from '../constants.js';
+//import constants from '../constants.js';
 
 const getData = (onSuccess, onFail) => {
   fetch('https://26.javascript.pages.academy/keksobooking/data')
@@ -20,11 +20,13 @@ const sendData = (onSuccess, onFail, body) => {
       if (response.ok) {
         onSuccess();
       } else {
-        onFail(constants.ERROR_MESSAGE);
+        //onFail(constants.ERROR_MESSAGE);
+        onFail();
       }
     })
     .catch(() => {
-      onFail(constants.ERROR_MESSAGE);
+      //onFail(constants.ERROR_MESSAGE);
+      onFail();
     });
 };
 
