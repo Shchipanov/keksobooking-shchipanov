@@ -8,6 +8,8 @@ const addressElement = document.querySelector('#address');
 const formElement = document.querySelector('.ad-form');
 const map = L.map('map-canvas');
 
+let sourceAds = [];
+
 // блок отрисовки главной метки
 const pinIconElement = L.icon({
   iconUrl: './img/main-pin.svg',
@@ -23,6 +25,12 @@ const pinMarkerElement = L.marker(
   }
 );
 
+const getAds = () => sourceAds.slice();
+
+const setAds = (newAds) => {
+  sourceAds = newAds;
+};
+
 /** перевод страницы в активное состояние */
 const enablePage = () => {
   enableForm();
@@ -30,10 +38,8 @@ const enablePage = () => {
   enableSlider();
 };
 
-/** Отрисовка карты
- * @param {object} coordinate geographical coordinates
- * @param {Number} count  zoom level
- */
+// Отрисовка карты
+
 const initMap = (coordinate, count) => {
   map.on('load', () => {
     enablePage();
@@ -57,10 +63,9 @@ pinMarkerElement.on('moveend', (evt) => {
 /**Создание слоя и добавление на карту */
 const markerGroup = L.layerGroup().addTo(map);
 
-/**
- * отдельный слой для основной метки, для исключения из фильтрации.
- */
-const mainMarkerGroup = L.layerGroup().addTo(map);
+const clearMap = () => {
+  markerGroup.clearLayers();
+};
 
 // блок отрисовки похожих объявлений
 const pinIconSimilarElement = L.icon({
@@ -83,11 +88,18 @@ const createMarker = (paramPoint) => {
   marker.addTo(markerGroup).bindPopup(createCardElement(paramPoint));
 };
 
-const addPoints = (paramData) => {
+/*const addPoints = (paramData) => {
   paramData.slice(0, constants.NUMBER_MARKERS).forEach((paramPoint) => {
     createMarker(paramPoint);
   });
   pinMarkerElement.addTo(mainMarkerGroup);
+};*/
+const renderPoints = (ads) => {
+  const limitedAds =
+    ads.length > constants.MAX_POINTS_RENDER_LIMIT
+      ? ads.slice(0, constants.MAX_POINTS_RENDER_LIMIT)
+      : ads;
+  limitedAds.forEach((ad) => createMarker(ad));
 };
 
 // возвращает начальные значения
@@ -97,9 +109,12 @@ const resetMap = () => {
   map.setView(constants.COORDINATE_MAP, constants.COUNT_MAP_ZOOM);
 };
 
-//todo похоже нигде не используются. проверить.
-// const clearPinMarkers = () => markerGroup.clearLayers();
-// const clearMainPinMarkers = () => mainMarkerGroup.clearLayers();
-
-
-export { initMap, addPoints, resetMap, markerGroup };
+export {
+  initMap,
+  resetMap,
+  markerGroup,
+  clearMap,
+  renderPoints,
+  getAds,
+  setAds,
+};

@@ -41,4 +41,13 @@ const addImageHouseLoader = () => {
   });
 };
 
-export { addImageHouseLoader, addAvatarLoader };
+const clearPreview = () => {
+  const imagePreviewBlock = document.querySelector('.ad-form__photo img');
+  avatarPreviewElement.src = constants.DEFAULT_AVATAR;
+
+  if (imagePreviewBlock) {
+    imagePreviewBlock.remove();
+  }
+};
+
+export { addImageHouseLoader, addAvatarLoader, clearPreview };
