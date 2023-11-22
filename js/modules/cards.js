@@ -78,7 +78,8 @@ const createCardElement = (paramAdvertisement) => {
   }
 
   const photosContainerElement = cardElement.querySelector('.popup__photos');
-  if (paramAdvertisement.offer.photos.lenght === 0) {
+  if (paramAdvertisement.offer.photos.lenght === 0
+  ) {
     photosContainerElement.remove();
   } else {
     const photoElement = cardElement.querySelector('.popup__photo');
