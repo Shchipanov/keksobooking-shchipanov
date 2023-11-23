@@ -6,7 +6,7 @@ const valueElement = document.querySelector('.ad-form__value');
 const initSlider = () => {
   noUiSlider.create(sliderElement, {
     range: {
-      min: 0,
+      min: constants.MinPriceLimit.FLAT,
       max: constants.MAX_PRICE,
     },
     start: 0,

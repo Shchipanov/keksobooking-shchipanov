@@ -47,27 +47,30 @@ pristine.addValidator(
 const validateRoomNumber = (value) => {
   const capacityValue = capacityElement.value;
 
-  if (value === '1') {
-    return capacityValue === '1';
-  } else if (value === '2') {
-    return capacityValue === '1' || capacityValue === '2';
-  } else if (value === '3') {
+  if (value === constants.GuestsCount.ONE) {
+    return capacityValue === constants.GuestsCount.ONE;
+  } else if (value === constants.GuestsCount.TWO) {
     return (
-      capacityValue === '1' || capacityValue === '2' || capacityValue === '3'
-    );
-  } else if (value === '100') {
-    return capacityValue === '0';
+      capacityValue === constants.GuestsCount.ONE ||
+      capacityValue === constants.GuestsCount.TWO);
+  } else if (value === constants.GuestsCount.THREE) {
+    return (
+      capacityValue === constants.GuestsCount.ONE ||
+      capacityValue === constants.GuestsCount.TWO ||
+      capacityValue === constants.GuestsCount.THREE);
+  } else if (value === constants.GuestsCount.ZERO) {
+    return capacityValue === constants.GuestsCount.ZERO;
   }
 };
 
 const getRoomNumberErrorMessage = (value) => {
-  if (value === '1') {
-    return 'Для 1 гостя';
-  } else if (value === '2') {
-    return 'Возможно не более 2х гостей';
-  } else if (value === '3') {
-    return 'Возможно не более 3х гостей';
-  } else if (value === '100') {
+  if (value === constants.RoomsCount.ONE) {
+    return `Для ${constants.GuestsCount.ONE} гостя`;
+  } else if (value === constants.RoomsCount.TWO) {
+    return `Возможно не более ${constants.GuestsCount.TWO}х гостей`;
+  } else if (value === constants.RoomsCount.THREE) {
+    return `Возможно не более ${constants.GuestsCount.THREE}х гостей`;
+  } else if (value === constants.RoomsCount.HUNDRED) {
     return 'Не для гостей';
   }
 };
@@ -85,52 +88,52 @@ capacityElement.addEventListener('change', () => {
 const validateType = (value) => {
   const price = priceElement;
 
-  if (value === 'bungalow') {
-    price.placeholder = 0;
-    price.min = 0;
+  if (value === constants.HousingType.BUNGALOW) {
+    price.placeholder = constants.MinPriceLimit.BUNGALOW;
+    price.min = constants.MinPriceLimit.BUNGALOW;
     sliderElement.noUiSlider.updateOptions({
       range: {
-        min: 0,
+        min: constants.MinPriceLimit.BUNGALOW,
         max: constants.MAX_PRICE,
       },
     });
     return true;
-  } else if (value === 'flat') {
-    price.placeholder = 1000;
-    price.min = 1000;
+  } else if (value === constants.HousingType.FLAT) {
+    price.placeholder = constants.MinPriceLimit.FLAT;
+    price.min = constants.MinPriceLimit.FLAT;
     sliderElement.noUiSlider.updateOptions({
       range: {
-        min: 1000,
+        min: constants.MinPriceLimit.FLAT,
         max: constants.MAX_PRICE,
       },
     });
     return true;
-  } else if (value === 'hotel') {
-    price.placeholder = 3000;
-    price.min = 3000;
+  } else if (value === constants.HousingType.HOTEL) {
+    price.placeholder = constants.MinPriceLimit.HOTEL;
+    price.min = constants.MinPriceLimit.HOTEL;
     sliderElement.noUiSlider.updateOptions({
       range: {
-        min: 3000,
+        min: constants.MinPriceLimit.HOTEL,
         max: constants.MAX_PRICE,
       },
     });
     return true;
-  } else if (value === 'house') {
-    price.placeholder = 5000;
-    price.min = 5000;
+  } else if (value === constants.HousingType.HOUSE) {
+    price.placeholder = constants.MinPriceLimit.HOUSE;
+    price.min = constants.MinPriceLimit.HOUSE;
     sliderElement.noUiSlider.updateOptions({
       range: {
-        min: 5000,
+        min: constants.MinPriceLimit.HOUSE,
         max: constants.MAX_PRICE,
       },
     });
     return true;
-  } else if (value === 'palace') {
-    price.placeholder = 10000;
-    price.min = 10000;
+  } else if (value === constants.HousingType.PALACE) {
+    price.placeholder = constants.MinPriceLimit.PALACE;
+    price.min = constants.MinPriceLimit.PALACE;
     sliderElement.noUiSlider.updateOptions({
       range: {
-        min: 10000,
+        min: constants.MinPriceLimit.PALACE,
         max: constants.MAX_PRICE,
       },
     });

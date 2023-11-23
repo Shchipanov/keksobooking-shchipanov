@@ -5,7 +5,7 @@ import { pristine } from '../form-validation.js';
 import { clearFilterForm, filterAds } from './form-filter.js';
 import { displayMessageError } from './message.js';
 import { resetMap } from './map.js';
-import { addImageHouseLoader, addAvatarLoader, clearPreview } from './image.js';
+import { addImageHouseLoader, addAvatarLoader, clearPreview } from './form-image.js';
 
 /** Перевод формы в неактивное состояние */
 const formElement = document.querySelector('.ad-form');
@@ -32,7 +32,7 @@ const blockSubmitButton = () => {
   submitButtonElement.disabled = true;
 };
 
-const unBlockSubmitButton = () => {
+const unblockSubmitButton = () => {
   submitButtonElement.disabled = false;
 };
 
@@ -72,11 +72,12 @@ const setUserFormSubmit = (onSuccess) => {
       sendData(
         () => {
           onSuccess();
-          unBlockSubmitButton();
+          unblockSubmitButton();
           resetForm();
         },
         () => {
           displayMessageError(constants.ERROR_MESSAGE);
+          unblockSubmitButton();
         },
         new FormData(evt.target)
       );
