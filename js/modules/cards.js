@@ -62,7 +62,7 @@ const createCardElement = (paramAdvertisement) => {
     cardElement.querySelector('.popup__features');
   if (
     !paramAdvertisement.offer.features ||
-    paramAdvertisement.offer.features.lenght === 0
+    paramAdvertisement.offer.features.length === 0
   ) {
     featuresContainerElement.remove();
   } else {
@@ -78,7 +78,7 @@ const createCardElement = (paramAdvertisement) => {
   }
 
   const photosContainerElement = cardElement.querySelector('.popup__photos');
-  if (paramAdvertisement.offer.photos.lenght === 0
+  if (paramAdvertisement.offer.photos.length === 0
   ) {
     photosContainerElement.remove();
   } else {

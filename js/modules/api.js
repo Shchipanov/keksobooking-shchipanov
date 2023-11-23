@@ -7,7 +7,7 @@ const getData = (onSuccess, onFail) => {
       onSuccess(data);
     })
     .catch(() => {
-      onFail('Произошла ошибка при загрузке. Попробуйте ещё раз.');
+      onFail(constants.ERROR_MAP_MESSAGE);
     });
 };
 
@@ -21,10 +21,12 @@ const sendData = (onSuccess, onFail, body) => {
         onSuccess();
       } else {
         onFail(constants.ERROR_MESSAGE);
+        //onFail();
       }
     })
     .catch(() => {
       onFail(constants.ERROR_MESSAGE);
+      //onFail();
     });
 };
 

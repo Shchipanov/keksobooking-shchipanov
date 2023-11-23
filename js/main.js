@@ -6,7 +6,7 @@ import {
   displayMessageSuccess,
 } from './modules/message.js';
 import { getData } from './modules/api.js';
-import { disablePage } from './modules/general.js';
+import { disablePage } from './modules/disable-page.js';
 import { initFilters, filterAds } from './modules/form-filter.js';
 import { debounce } from './modules/util.js';
 
